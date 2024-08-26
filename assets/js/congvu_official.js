@@ -108,7 +108,7 @@ function renderNewsByID(idNews){
         }
     }
     data = dataByIdNews;
-    renderToWebsite(dataByIdNews);
+    renderToWebsite(dataByIdNews, 1);
 }
 
 function renderHotNews(){
@@ -133,7 +133,7 @@ function renderHotNews(){
         numberPage = (data.length - data.length%6)/6 + 1;
         currentPage = 1;
     }
-    renderToWebsite(dataHotNews);
+    renderToWebsite(dataHotNews, currentPage);
 }
 
 function showResultOfSearch(){
@@ -184,7 +184,7 @@ function showResultOfSearch(){
     
     dataSearchRender = [];
     if(dataSearch.length > 0 && dataSearch.length <=6){
-        renderToWebsite(dataSearch);
+        renderToWebsite(dataSearch, currentPage);
         addContentPagination(currentPage);
     }
     else if(dataSearch.length > 6){ //Render cho trang 1
@@ -194,16 +194,16 @@ function showResultOfSearch(){
         dataSearchRender.push(dataSearch[3]);
         dataSearchRender.push(dataSearch[4]);
         dataSearchRender.push(dataSearch[5]);
-        renderToWebsite(dataSearchRender);
+        renderToWebsite(dataSearchRender, currentPage);
         addContentPagination(currentPage);
     }
     else{
-        renderToWebsite(dataSearch);
+        renderToWebsite(dataSearch, currentPage);
         addContentPagination(currentPage);
     }
 }
 
-function renderToWebsite(dataRender){
+function renderToWebsite(dataRender, currentPage){
     htmlListInfo = "";
     htmlTitleInfo = "";
     htmlContactInfo = ""
@@ -402,7 +402,7 @@ function gotoPage(page){
         for(var count = startItem; count < endItem; count++){
             dataRenderInfo.push(data[count]);
         }       
-        renderToWebsite(dataRenderInfo);
+        renderToWebsite(dataRenderInfo, currentPage);
         addContentPagination(currentPage);   
       }
       else{
@@ -422,7 +422,7 @@ function gotoPage(page){
         for(var count = startItem; count < endItem; count++){
             dataRenderInfo.push(data[count]);
         }       
-        renderToWebsite(dataRenderInfo);
+        renderToWebsite(dataRenderInfo, currentPage);
         addContentPagination(currentPage);
       }
       else{
@@ -443,7 +443,7 @@ function gotoPage(page){
       for(var count = startItem; count < endItem; count++){
         dataRenderInfo.push(data[count]);
       }
-      renderToWebsite(dataRenderInfo);
+      renderToWebsite(dataRenderInfo, currentPage);
       addContentPagination(currentPage);
     }
     
